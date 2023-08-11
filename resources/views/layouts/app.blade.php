@@ -50,7 +50,7 @@
         <div>
             @yield('content')
         </div>
-        <br>
+
         <div>
             <!-- @include('layouts.footer') -->
         </div>
