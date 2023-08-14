@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Inventory;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
-class PostsController extends Controller
+class InventoryController extends Controller
 {
 
     public function __construct()
@@ -20,8 +20,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('blog.index')
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+        return view('inventory.index')
+            ->with('inventories', Inventory::orderBy('updated_at', 'DESC')->get());
     }
 
     /**
@@ -31,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('inventory.create');
     }
 
     /**
@@ -52,16 +52,16 @@ class PostsController extends Controller
 
         $request->image->move(public_path('images'), $newImageName);
 
-        Post::create([
+        Inventory::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+            'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
 
-        return redirect('/blog')
-            ->with('message', 'Your post has been added!');
+        return redirect('/inventory')
+            ->with('message', 'Your inventory has been added!');
     }
 
     /**
@@ -72,8 +72,8 @@ class PostsController extends Controller
      */
     public function show($slug)
     {
-        return view('blog.show')
-            ->with('post', Post::where('slug', $slug)->first());
+        return view('inventory.show')
+            ->with('inventory', Inventory::where('slug', $slug)->first());
     }
 
     /**
@@ -84,8 +84,8 @@ class PostsController extends Controller
      */
     public function edit($slug)
     {
-        return view('blog.edit')
-            ->with('post', Post::where('slug', $slug)->first());
+        return view('inventory.edit')
+            ->with('inventory', Inventory::where('slug', $slug)->first());
     }
 
     /**
@@ -102,16 +102,16 @@ class PostsController extends Controller
             'description' => 'required',
         ]);
 
-        Post::where('slug', $slug)
+        Inventory::where('slug', $slug)
             ->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id
             ]);
 
-        return redirect('/blog')
-            ->with('message', 'Your post has been updated!');
+        return redirect('/inventory')
+            ->with('message', 'Your inventory has been updated!');
     }
 
     /**
@@ -122,11 +122,11 @@ class PostsController extends Controller
      */
     public function destroy($slug)
     {
-        $post = Post::where('slug', $slug);
-        $post->delete();
+        $inventory = Inventory::where('slug', $slug);
+        $inventory->delete();
 
-        return redirect('/blog')
-            ->with('message', 'Your post has been deleted!');
+        return redirect('/inventory')
+            ->with('message', 'Your inventory has been deleted!');
     }
     /**
      * Search in the specified resource from storage.
@@ -140,12 +140,12 @@ class PostsController extends Controller
         $search = $request->input('search');
 
         // Search in the title and body columns from the posts table
-        $posts = Post::query()
+        $inventories = Inventory::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
 
         // Return the search view with the resluts compacted
-        return view('search', compact('posts'));
+        return view('search', compact('inventories'));
     }
 }

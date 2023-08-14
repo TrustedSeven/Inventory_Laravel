@@ -27,48 +27,48 @@
 
 @if (Auth::check())
 <div class="pt-15 w-4/5 m-auto">
-    <a href="/blog/create" class="bg-blue-900 uppercase bg-transparent text-gray-100 text-xl font-bold py-3 px-5 rounded-3xl">
+    <a href="/inventory/create" class="bg-blue-900 uppercase bg-transparent text-gray-100 text-xl font-bold py-3 px-5 rounded-3xl">
         Create Inventory
     </a>
 </div>
 @endif
 
-@foreach ($posts as $post)
+@foreach ($inventories as $inventory)
 <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
     <div>
-        <img src="{{ asset('images/' . $post->image_path) }}" alt="">
+        <img src="{{ asset('images/' . $inventory->image_path) }}" alt="">
     </div>
     <div>
         <h2 class="text-gray-700 font-bold text-5xl pb-4">
-            {{ $post->title }}
+            {{ $inventory->title }}
         </h2>
 
         <span class="text-gray-500">
-            By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
+            By <span class="font-bold italic text-gray-800">{{ $inventory->user->name }}</span>, Created on {{ date('jS M Y', strtotime($inventory->updated_at)) }}
         </span>
 
         <p class="text-2xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-            {{substr($post->description, 0, 250)}} <span class="text-3xl">...</span>
+            {{substr($inventory->description, 0, 250)}} <span class="text-3xl">...</span>
         </p>
 
         <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
-                <a href="/blog/{{ $post->slug }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                <a href="/inventory/{{ $inventory->slug }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                     Read More
                 </a>
             </div>
 
         </div>
 
-        @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+        @if (isset(Auth::user()->id) && Auth::user()->id == $inventory->user_id)
         <span class="float-right">
-            <a href="/blog/{{ $post->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">
+            <a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">
                 Edit
             </a>
         </span>
 
         <span class="float-right">
-            <form action="/blog/{{ $post->slug }}" method="POST" id="delete-form">
+            <form action="/inventory/{{ $inventory->slug }}" method="POST" id="delete-form">
                 @csrf
                 @method('delete')
 
