@@ -27,6 +27,14 @@
                         </div>
 
                     </div>
+                    <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                        <div class="rounded-md shadow">
+                            <a href="{{url('/users')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                Manage Users
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
             </main>
         </div>
