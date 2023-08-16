@@ -19,9 +19,10 @@ class InventoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
         return view('inventory.index')
-            ->with('inventories', Inventory::orderBy('updated_at', 'DESC')->get());
+            ->with('inventories', Inventory::orderBy('updated_at', 'ASC')->get());
     }
 
     /**
@@ -43,20 +44,35 @@ class InventoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048'
+            'line_no' => 'required',
         ]);
 
-        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+        // $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
 
-        $request->image->move(public_path('images'), $newImageName);
+        // $request->image->move(public_path('images'), $newImageName);
 
         Inventory::create([
-            'title' => $request->input('title'),
+            'line_no' => $request->input('line_no'),
             'description' => $request->input('description'),
-            'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->title),
-            'image_path' => $newImageName,
+            'line_no' => $request->input('line_no'),
+            'location' => $request->input('location'),
+            'device_a_rack_type' => $request->input('device_a_rack_type'),
+            'device_a_rack' => $request->input('device_a_rack'),
+            'device_a_ru' => $request->input('device_a_ru'),
+            'device_a_model' => $request->input('device_a_model'),
+            'device_a_description' => $request->input('device_a_description'),
+            'device_a_host_name' => $request->input('device_a_host_name'),
+            'device_a_port' => $request->input('device_a_port'),
+            'detailed_cable_info' => $request->input('detailed_cable_info'),
+            'device_b_port' => $request->input('device_b_port'),
+            'device_b_host_name' => $request->input('device_b_host_name'),
+            'device_b_description' => $request->input('device_b_description'),
+            'device_b_model' => $request->input('device_b_model'),
+            'device_b_ru' => $request->input('device_b_ru'),
+            'device_b_rack' => $request->input('device_b_rack'),
+            'device_b_rack_type' => $request->input('device_b_rack_type'),
+            'note' => $request->input('note'),
+            'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->line_no),
             'user_id' => auth()->user()->id
         ]);
 
@@ -98,14 +114,31 @@ class InventoryController extends Controller
     public function update(Request $request, $slug)
     {
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
+            'line_no' => 'required',
         ]);
 
         Inventory::where('slug', $slug)
             ->update([
-                'title' => $request->input('title'),
+                'title' => $request->input('line_no'),
                 'description' => $request->input('description'),
+                'line_no' => $request->input('line_no'),
+                'location' => $request->input('location'),
+                'device_a_rack_type' => $request->input('device_a_rack_type'),
+                'device_a_rack' => $request->input('device_a_rack'),
+                'device_a_ru' => $request->input('device_a_ru'),
+                'device_a_model' => $request->input('device_a_model'),
+                'device_a_description' => $request->input('device_a_description'),
+                'device_a_host_name' => $request->input('device_a_host_name'),
+                'device_a_port' => $request->input('device_a_port'),
+                'detailed_cable_info' => $request->input('detailed_cable_info'),
+                'device_b_port' => $request->input('device_b_port'),
+                'device_b_host_name' => $request->input('device_b_host_name'),
+                'device_b_description' => $request->input('device_b_description'),
+                'device_b_model' => $request->input('device_b_model'),
+                'device_b_ru' => $request->input('device_b_ru'),
+                'device_b_rack' => $request->input('device_b_rack'),
+                'device_b_rack_type' => $request->input('device_b_rack_type'),
+                'note' => $request->input('note'),
                 'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id
             ]);
@@ -141,8 +174,26 @@ class InventoryController extends Controller
 
         // Search in the title and body columns from the posts table
         $inventories = Inventory::query()
-            ->where('title', 'LIKE', "%{$search}%")
-            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->where('line_no', 'LIKE', "%{$search}%")
+            ->orWhere('location', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_rack', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_rack_type', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_ru', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_model', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_ru', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_description', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_host_name', 'LIKE', "%{$search}%")
+            ->orWhere('device_a_port', 'LIKE', "%{$search}%")
+            ->orWhere('detailed_cable_info', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_rack', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_rack_type', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_ru', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_model', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_ru', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_description', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_host_name', 'LIKE', "%{$search}%")
+            ->orWhere('device_b_port', 'LIKE', "%{$search}%")
+            ->orWhere('note', 'LIKE', "%{$search}%")
             ->get();
 
         // Return the search view with the resluts compacted

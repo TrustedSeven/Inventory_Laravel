@@ -32,62 +32,129 @@
     </a>
 </div>
 @endif
-
-@foreach ($inventories as $inventory)
-<div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
-    <div>
-        <img src="{{ asset('images/' . $inventory->image_path) }}" alt="">
-    </div>
-    <div>
-        <h2 class="text-gray-700 font-bold text-5xl pb-4">
-            {{ $inventory->title }}
-        </h2>
-
-        <span class="text-gray-500">
-            By <span class="font-bold italic text-gray-800">{{ $inventory->user->name }}</span>, Created on {{ date('jS M Y', strtotime($inventory->updated_at)) }}
-        </span>
-
-        <p class="text-2xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-            {{substr($inventory->description, 0, 250)}} <span class="text-3xl">...</span>
-        </p>
-
-        <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-                <a href="/inventory/{{ $inventory->slug }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                    Read More
-                </a>
-            </div>
-
-        </div>
-
-        @if (isset(Auth::user()->id) && Auth::user()->id == $inventory->user_id)
-        <span class="float-right">
-            <a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">
-                Edit
-            </a>
-        </span>
-
-        <span class="float-right">
-            <form action="/inventory/{{ $inventory->slug }}" method="POST" id="delete-form">
-                @csrf
-                @method('delete')
-
-                <button class="text-red-500 pr-3" type="submit" onclick="if (confirm('Are you sure to delete this data?')) {
-                    event.preventDefault();
-                    document.getElementById('delete-form').submit();
-
-                    }else{
-                        event.preventDefault();
-                    }
-                ">
-                    Delete
-                </button>
-
-            </form>
-        </span>
-        @endif
-    </div>
+<div class="relative overflow-x-auto mt-5 mx-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Line No.
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Location
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Rack Type
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Rack
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A RU
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Model
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Host Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device A Port
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Detailed Cable Info
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Port
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Host Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Model
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B RU
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Rack
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Device B Rack Type
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Note
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($inventories as $inventory)
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$inventory->line_no}}
+                </th>
+                <td class="px-6 py-4">
+                    {{$inventory->location}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_rack_type}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_rack}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_ru}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_model}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_description}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_host_name}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_a_port}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->detailed_cable_info}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_port}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_host_name}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_description}}
+                    <!-- {{ date('jS M Y', strtotime($inventory->updated_at)) }} -->
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_model}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_ru}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_rack}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->device_b_rack_type}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$inventory->note}}
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
-@endforeach
+
 
 @endsection

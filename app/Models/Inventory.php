@@ -11,7 +11,7 @@ class Inventory extends Model
     use HasFactory;
     use sluggable;
 
-    protected $fillable = ['title', 'slug', 'description', 'image_path', 'user_id'];
+    protected $fillable = ['line_no', 'slug', 'location', 'device_a_rack_type', 'device_a_rack', 'device_a_ru', 'device_a_model', 'device_a_description', 'device_a_host_name', 'device_a_port', 'detailed_cable_info', 'device_b_port', 'device_b_host_name', 'device_b_description', 'device_b_model', 'device_b_ru', 'device_b_rack', 'device_b_rack_type', 'note', 'user_id'];
 
     public function user()
     {
@@ -27,7 +27,7 @@ class Inventory extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'line_no'
             ]
         ];
     }

@@ -28,7 +28,6 @@
 
         <input type="text" name="title" value="{{ $inventory->title }}" class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
-        <textarea name="description" placeholder="Description..." class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">{{ $inventory->description }}</textarea>
 
         <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <button type="submit" class="uppercase mt-15 text-white bg-indigo-600 hover:bg-indigo-700 text-lg font-extrabold py-4 px-8 rounded-3xl">
