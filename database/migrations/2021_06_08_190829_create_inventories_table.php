@@ -28,7 +28,7 @@ class CreateInventoriesTable extends Migration
             $table->string('device_b_rack_type')->nullable();
             $table->string('device_b_rack')->nullable();
             $table->string('device_b_ru')->nullable();
-            $table->string('device_b_model');
+            $table->string('device_b_model')->nullable();
             $table->string('device_b_description')->nullable();
             $table->string('device_b_host_name')->nullable();
             $table->string('device_b_port')->nullable();
@@ -39,6 +39,7 @@ class CreateInventoriesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
+
 
     /**
      * Reverse the migrations.

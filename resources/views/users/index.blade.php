@@ -27,7 +27,7 @@
 
 @if (Auth::check())
 <div class="pt-15 w-4/5 m-auto">
-    <a href="/users/create" class="bg-blue-900 uppercase bg-transparent text-gray-100 text-xl font-bold py-3 px-5 rounded-3xl">
+    <a href="/users" class="bg-blue-500 hover:bg-blue-400 uppercase bg-transparent text-gray-100 text-xl font-bold py-3 px-5 rounded-3xl">
         Create User
     </a>
 </div>

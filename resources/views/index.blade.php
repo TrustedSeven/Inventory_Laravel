@@ -19,7 +19,7 @@
                     <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                         We provide simple, easy way of managing your inventory. Some more content has to be added.
                     </p>
-                    <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                    <!-- <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                         <div class="rounded-md shadow">
                             <a href="{{url('/inventory')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
                                 Manage Inventory
@@ -34,7 +34,38 @@
                             </a>
                         </div>
 
-                    </div>
+                    </div> -->
+                    <ul class="w-4/5 text-sm font-medium text-gray-900 bg-white mt-15">
+                        <li class="w-full py-5">
+                            <div class="rounded-md shadow">
+                                <a href="{{url('/inventory')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Manage Inventory
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="w-full py-5">
+                            <div class="rounded-md shadow">
+                                <a href="{{url('/users')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Manage Users
+                                </a>
+                            </div>
+                        </li>
+                        <li class="w-full py-5">
+                            <div class="rounded-md shadow">
+                                <a href="{{url('/')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Manage Report
+                                </a>
+                            </div>
+                        </li>
+                        <li class="w-full py-5">
+                            <div class="rounded-md shadow">
+                                <a href="{{url('/')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Manage Schedule
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </main>
         </div>
@@ -44,70 +75,6 @@
     </div>
 </div>
 
-<div class="w-full bg-yellow-100 sm:grid grid-cols-2 gap-20 w-4/5 mx-auto  py-15 px-15 border-b border-gray-200 ">
-    <div>
-        <img src="https://articles.cyzerg.com/hs-fs/hubfs/Employee%20Picking%20with%20Tablet_result.jpg?width=688&name=Employee%20Picking%20with%20Tablet_result.jpg" width="700" alt="">
-    </div>
 
-    <div class="m-auto sm:m-auto text-left w-4/5 block">
-        <h2 class="text-3xl font-extrabold text-gray-900">
-            Service we provide ;
-        </h2>
-
-        <p class="py-8 text-blue-400 text-s">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus.
-        </p>
-
-        <p class="font-extrabold text-blue-400 text-s pb-9">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente magnam vero nostrum! Perferendis eos molestias porro vero. Vel alias.
-        </p>
-        <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-                <a href="{{url('/inventory')}}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                    Learn More
-                </a>
-            </div>
-
-        </div>
-        <!-- <a href="/blog" class="uppercase bg-green-800 hover:bg-yellow-900 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-            Find Out More
-        </a> -->
-    </div>
-</div>
-
-<div class="text-center py-15 bg-grat-0">
-    <h2 class="text-4xl font-bold py-10">
-        Abdout us
-    </h2>
-
-    <p class="m-auto w-4/5 text-gray-500">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque exercitationem saepe enim veritatis, eos temporibus quaerat facere consectetur qui.
-    </p>
-</div>
-
-<div class="sm:grid grid-cols-2 w-4/5 m-auto shadow-lg">
-    <div class="flex bg-yellow-100 text-gray-900 ">
-        <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-            <span class="uppercase text-l font-extrabold text-red-500">
-                Inventory Manager
-            </span>
-
-            <h3 class="text-xl font-bold py-10">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas necessitatibus dolorum error culpa laboriosam.
-            </h3>
-
-            <div class="mt-5 mb-10 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div class="rounded-md shadow">
-                    <a href="https://google.com/BillGates" target="_blanck" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                        Find out More
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div>
-        <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fHww&w=1000&q=80" alt="">
-    </div>
-</div>
 
 @endsection
