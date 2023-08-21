@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\InventoryController;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('/search', [InventoryController::class, 'search'])->name('search');
 // });
 
 Route::get('/users', [\App\Http\Controllers\UserController::class, 'index'])->name('Users');
+URL::forceScheme('https');
