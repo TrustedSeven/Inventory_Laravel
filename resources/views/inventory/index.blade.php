@@ -160,13 +160,12 @@
                             @method('delete')
 
                             <button class="text-red-500" type="submit" onclick="if (confirm('Are you sure to delete this inventory?')) {
-                    event.preventDefault();
-                    document.getElementById('delete-form').submit();
-
-                    }else{
-                        event.preventDefault();
-                    }
-                ">
+                            event.preventDefault();
+                            this.parentElement.submit();
+                            }else{
+                             event.preventDefault();
+                             }
+                            ">
                                 Delete
                             </button>
 
@@ -181,3 +180,4 @@
 @endif
 
 @endsection
+
