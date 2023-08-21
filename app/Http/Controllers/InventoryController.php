@@ -53,8 +53,6 @@ class InventoryController extends Controller
 
         Inventory::create([
             'line_no' => $request->input('line_no'),
-            'description' => $request->input('description'),
-            'line_no' => $request->input('line_no'),
             'location' => $request->input('location'),
             'device_a_rack_type' => $request->input('device_a_rack_type'),
             'device_a_rack' => $request->input('device_a_rack'),
@@ -119,8 +117,6 @@ class InventoryController extends Controller
 
         Inventory::where('slug', $slug)
             ->update([
-                'title' => $request->input('line_no'),
-                'description' => $request->input('description'),
                 'line_no' => $request->input('line_no'),
                 'location' => $request->input('location'),
                 'device_a_rack_type' => $request->input('device_a_rack_type'),
@@ -139,7 +135,7 @@ class InventoryController extends Controller
                 'device_b_rack' => $request->input('device_b_rack'),
                 'device_b_rack_type' => $request->input('device_b_rack_type'),
                 'note' => $request->input('note'),
-                'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->title),
+                'slug' => SlugService::createSlug(Inventory::class, 'slug', $request->line_no),
                 'user_id' => auth()->user()->id
             ]);
 

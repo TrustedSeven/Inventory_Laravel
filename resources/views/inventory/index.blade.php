@@ -11,7 +11,7 @@
 <div class="w-2/5 h-9  m-auto  ">
 
     <form class="flex rounded-lg shadow-lg" action="{{ route('search') }}" method="GET">
-        <input class="flex-1 rounded-lg" type="text" name="search" required placeholder="Not working yet! Coming Soon"/>
+        <input class="flex-1 rounded-lg" type="text" name="search" required placeholder="Not working yet! Coming Soon" />
         <button class=" bg-blue-500 hover:bg-blue-400 text-gray-100 p-3 flex-2 rounded-lg" type="submit">Search</button>
     </form>
 </div>
@@ -90,6 +90,9 @@
                 <th scope="col" class="px-2 py-2">
                     Note
                 </th>
+                <th scope="col" class="px-2 py-2">
+                    Edit/Delete
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -149,6 +152,26 @@
                 </td>
                 <td class="px-2 py-2">
                     {{$inventory->note}}
+                </td>
+                <td class="px-2 py-2">
+                    <span  class="float-left"><a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">Edit</a></span>/<span  class="float-right">
+                        <form action="/inventory/{{ $inventory->slug }}" method="POST" id="delete-form">
+                            @csrf
+                            @method('delete')
+
+                            <button class="text-red-500" type="submit" onclick="if (confirm('Are you sure to delete this inventory?')) {
+                    event.preventDefault();
+                    document.getElementById('delete-form').submit();
+
+                    }else{
+                        event.preventDefault();
+                    }
+                ">
+                                Delete
+                            </button>
+
+                        </form>
+                    </span>
                 </td>
             </tr>
             @endforeach
