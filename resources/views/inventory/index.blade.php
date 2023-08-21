@@ -31,7 +31,7 @@
         Add New Inventory
     </a>
 </div>
-@endif
+
 <div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12">
     <table class="w-full text-sm text-left text-gray-500 border border-gray dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
@@ -155,6 +155,6 @@
         </tbody>
     </table>
 </div>
-
+@endif
 
 @endsection
