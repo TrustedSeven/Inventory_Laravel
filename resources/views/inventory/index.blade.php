@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-6xl">
@@ -8,13 +9,13 @@
         </h1>
     </div>
 </div>
-<div class="w-2/5 h-9  m-auto  ">
+<!-- <div class="w-2/5 h-9  m-auto  ">
 
     <form class="flex rounded-lg shadow-lg" action="{{ route('search') }}" method="GET">
         <input class="flex-1 rounded-lg" type="text" name="search" required placeholder="Not working yet! Coming Soon" />
         <button class=" bg-blue-500 hover:bg-blue-400 text-gray-100 p-3 flex-2 rounded-lg" type="submit">Search</button>
     </form>
-</div>
+</div> -->
 
 
 @if (session()->has('message'))
@@ -33,7 +34,7 @@
 </div>
 
 <div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12">
-    <table class="w-full text-sm text-left text-gray-500 border border-gray dark:text-gray-400">
+    <table id="inventorytable" class="w-full text-sm text-left text-gray-500 border border-gray dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="px-2 py-2">
@@ -154,7 +155,7 @@
                     {{$inventory->note}}
                 </td>
                 <td class="px-2 py-2">
-                    <span  class="float-left"><a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">Edit</a></span>/<span  class="float-right">
+                    <span class="float-left"><a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">Edit</a></span>/<span class="float-right">
                         <form action="/inventory/{{ $inventory->slug }}" method="POST" id="delete-form">
                             @csrf
                             @method('delete')
@@ -176,8 +177,25 @@
             @endforeach
         </tbody>
     </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var filtersConfig = {
+                base_path: 'tablefilter/',
+                col_0: 'none',
+                // col_1: 'checklist',
+                col_1: 'select',
+                // col_2: 'select',
+                // col_3: 'multiple',
+                // col_3:'select',
+                // col_4:'select',
+                col_18: 'none',
+            };
+            var tf = new TableFilter('inventorytable', filtersConfig);
+            tf.init();
+        });
+    </script>
 </div>
+
 @endif
 
 @endsection
-
