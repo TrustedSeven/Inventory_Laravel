@@ -49,8 +49,8 @@
                     </a>
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
-                    <!-- <a class="no-underline hover:underline" href="/">Home</a>
-                    <a class="no-underline hover:underline" href="/blog">Manage Inventory</a> -->
+                    <a class="no-underline hover:underline" href="/inventory">Manage Inventory</a>
+                    <a class="no-underline hover:underline" href="/users">Manage Users</a>
                     @guest
                     <a class="no-underline hover:underline" href="{{ route('login') }}"><button class="bg-white hover:bg-blue-500 text-gray-900 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Login</button></a>
                     @if (Route::has('register'))

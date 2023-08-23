@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-4/5 m-auto text-left">
-    <div class="py-15">
-        <h1 class="text-6xl">
+<div class="w-5/6 m-auto">
+    <div class="py-15 border-b border-gray-200">
+        <h1 class="text-4xl uppercase text-gray-900 font-bold">
             Create Inventory
         </h1>
     </div>
@@ -126,6 +126,7 @@
         </div>
 
         <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Create Inventory</button>
+        <a href="/inventory" class="border border-solid border-gray-900 rounded px-5 py-1.5 hover:bg-gray-400 text-sm font-medium">Cancel</a>
     </form>
 </div>
 
