@@ -176,6 +176,8 @@
             @endforeach
         </tbody>
     </table>
+    <button id="exportButton">Export to CSV</button>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var filtersConfig = {
@@ -224,6 +226,15 @@
             };
             var tf = new TableFilter('inventorytable', filtersConfig);
             tf.init();
+        });
+    </script>
+    <script>
+        var exportButton = document.getElementById('exportButton');
+        exportButton.addEventListener('click', function() {
+            inventorytable.export({
+                filename: 'filtered_data.csv',
+                format: 'csv'
+            });
         });
     </script>
 </div>
