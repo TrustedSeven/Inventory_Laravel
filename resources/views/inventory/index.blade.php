@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="w-4/5 m-auto text-center">
+<div class="w-11/12 m-auto">
     <div class="py-15 border-b border-gray-200">
-        <h1 class="text-6xl">
+        <h1 class="text-4xl uppercase text-gray-900 font-bold">
             Inventories
         </h1>
     </div>
@@ -16,10 +16,14 @@
         <button class=" bg-blue-500 hover:bg-blue-400 text-gray-100 p-3 flex-2 rounded-lg" type="submit">Search</button>
     </form>
 </div> -->
-
+<div class="pt-5 w-11/12 m-auto mb-5">
+    <a href="/inventory/create" class="uppercase bg-transparent text-gray-900 text-xl font-bold flex">
+        <img src="https://img.freepik.com/free-icon/button_318-745417.jpg" class="w-6" /> &nbsp; Add New
+    </a>
+</div>
 
 @if (session()->has('message'))
-<div class="w-4/5 m-auto mt-10 pl-2">
+<div class="w-4/5 m-auto mt-5 pl-2">
     <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-2 px-2">
         {{ session()->get('message') }}
     </p>
@@ -27,14 +31,9 @@
 @endif
 
 @if (Auth::check())
-<div class="pt-15 w-4/5 m-auto mb-5">
-    <a href="/inventory/create" class="bg-blue-500 hover:bg-blue-400 uppercase bg-transparent text-gray-100 text-xl font-bold py-2 px-5 rounded-3xl">
-        Add New Inventory
-    </a>
-</div>
 
-<div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12">
-    <table id="inventorytable" class="min-w-full border text-center text-sm font-light dark:border-neutral-500">
+<div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12 mb-5">
+    <table id="inventorytable" class="min-w-full border text-center text-sm font-light dark:border-neutral-500 mb-5">
         <thead class="border-b font-medium dark:border-neutral-500">
             <tr>
                 <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
@@ -228,6 +227,7 @@
         });
     </script>
 </div>
+
 
 @endif
 
