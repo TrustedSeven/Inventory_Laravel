@@ -181,6 +181,27 @@
         document.addEventListener('DOMContentLoaded', function() {
             var filtersConfig = {
                 base_path: 'tablefilter/',
+                paging: {
+                    results_per_page: ['Records: ', [5, 10, 25, 50]]
+                },
+                state: {
+                    types: ['local_storage'],
+                    filters: true,
+                    page_number: true,
+                    page_length: true,
+                    sort: true
+                },
+                alternate_rows: true,
+                btn_reset: true,
+                rows_counter: true,
+                loader: {
+                    html: '<div id="lblMsg"></div>',
+                    css_class: 'myLoader'
+                },
+                status_bar: {
+                    target_id: 'lblMsg',
+                    css_class: 'myStatus'
+                },
                 col_0: 'none',
                 // col_1: 'checklist',
                 col_1: 'select',
@@ -189,6 +210,18 @@
                 // col_3:'select',
                 // col_4:'select',
                 col_18: 'none',
+                col_types: [
+                    'number', 'string', 'string',
+                    'string', 'string', 'string',
+                    'string', 'string', 'string',
+                    'string', 'string', 'string',
+                    'string', 'string', 'string',
+                    'string', 'string', 'string',
+                    'string'
+                ],
+                extensions: [{
+                    name: 'sort'
+                }]
             };
             var tf = new TableFilter('inventorytable', filtersConfig);
             tf.init();
