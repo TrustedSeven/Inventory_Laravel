@@ -13,9 +13,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/tablefilter.js') }}"></script>
+    <script src="{{ asset('js/tf-1-2aa33b10e0e549020c12.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/tablefilter.css') }}" rel="stylesheet">
     <style>
         .myLoader {
             position: absolute;
