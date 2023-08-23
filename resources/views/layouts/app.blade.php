@@ -16,6 +16,25 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <style>
+        .myLoader {
+            position: absolute;
+            padding: 5px;
+            margin: 100px 0 0 5%;
+            width: auto;
+            z-index: 1000;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid #666;
+            background: #ffffcc;
+            vertical-align: middle;
+        }
+
+        .myStatus {
+            width: auto;
+            display: block;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
