@@ -34,127 +34,127 @@
 </div>
 
 <div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12">
-    <table id="inventorytable" class="w-full text-sm text-left text-gray-500 border border-gray dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+    <table id="inventorytable" class="min-w-full border text-center text-sm font-light dark:border-neutral-500">
+        <thead class="border-b font-medium dark:border-neutral-500">
             <tr>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Line No.
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Location
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Rack Type
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Rack
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A RU
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Model
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Description
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Host Name
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device A Port
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Detailed Cable Info
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Port
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Host Name
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Description
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Model
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B RU
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Rack
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Device B Rack Type
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="border-r px-6 py-4 dark:border-neutral-500">
                     Note
                 </th>
-                <th scope="col" class="px-2 py-2">
+                <th scope="col" class="px-6 py-4">
                     Edit/Delete
                 </th>
             </tr>
         </thead>
         <tbody>
             @foreach ($inventories as $inventory)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="border-b dark:border-neutral-500">
+                <th scope="row" class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->line_no}}
                 </th>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->location}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_rack_type}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_rack}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_ru}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_model}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_description}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_host_name}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_a_port}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->detailed_cable_info}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_port}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_host_name}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_description}}
                     <!-- {{ date('jS M Y', strtotime($inventory->updated_at)) }} -->
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_model}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_ru}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_rack}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->device_b_rack_type}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     {{$inventory->note}}
                 </td>
-                <td class="px-2 py-2">
+                <td class="whitespace-nowrap border-r px-6 py-4 font-medium dark:border-neutral-500">
                     <span class="float-left"><a href="/inventory/{{ $inventory->slug }}/edit" class="text-gray-700 italic hover:text-gray-900 hover:bg-green-500 hover:px-4 hover:text-gray-100 pb-1 border-b-2">Edit</a></span>/<span class="float-right">
                         <form action="/inventory/{{ $inventory->slug }}" method="POST" id="delete-form">
                             @csrf
