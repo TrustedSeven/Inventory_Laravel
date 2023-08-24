@@ -39,7 +39,7 @@
 
 @if (Auth::check())
 
-<div class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12 mb-5">
+<div id="scrollable-table" style="overflow-x: scroll;" class="relative overflow-x-auto mt-5 pt-5 mx-auto w-11/12 mb-5">
     <table id="inventorytable" class="min-w-full border text-center text-sm font-light dark:border-neutral-500 mb-5">
         <thead class="border-b font-medium dark:border-neutral-500">
             <tr>
@@ -187,6 +187,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var scrollableTable = document.getElementById("scrollable-table");
+            scrollableTable.scrollLeft = scrollableTable.scrollWidth;
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
