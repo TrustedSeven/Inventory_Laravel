@@ -17,9 +17,16 @@
     </form>
 </div> -->
 <div class="pt-5 w-11/12 m-auto mb-5">
-    <a href="/inventory/create" class="uppercase bg-transparent text-gray-900 text-xl font-bold flex">
-        <img src="https://img.freepik.com/free-icon/button_318-745417.jpg" class="w-6" /> &nbsp; Add New
-    </a>
+    <div class="float-left">
+        <a href="/inventory/create" class="uppercase bg-transparent text-gray-900 text-xl font-bold flex">
+            <img src="https://img.freepik.com/free-icon/button_318-745417.jpg" class="w-6" /> &nbsp; Add New
+        </a>
+    </div>
+    <div class="float-right">
+        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="export_csv();">Export CSV</button>
+        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="export_xlsx();">Export Excel</button>
+    </div>
+
 </div>
 
 @if (session()->has('message'))
@@ -176,7 +183,10 @@
             @endforeach
         </tbody>
     </table>
-    <button id="exportButton">Export to CSV</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -224,19 +234,208 @@
                     name: 'sort'
                 }]
             };
-            var tf = new TableFilter('inventorytable', filtersConfig);
+            tf = new TableFilter('inventorytable', filtersConfig);
             tf.init();
         });
-    </script>
-    <script>
-        var exportButton = document.getElementById('exportButton');
-        exportButton.addEventListener('click', function() {
-            inventorytable.export({
-                filename: 'filtered_data.csv',
-                format: 'csv'
+
+        // const download = function(data) {
+
+        //     // Creating a Blob for having a csv file format
+        //     // and passing the data with type
+        //     const blob = new Blob([data], {
+        //         type: 'text/csv'
+        //     });
+
+        //     // Creating an object for downloading url
+        //     const url = window.URL.createObjectURL(blob)
+
+        //     // Creating an anchor(a) tag of HTML
+        //     const a = document.createElement('a')
+
+        //     // Passing the blob downloading url
+        //     a.setAttribute('href', url)
+
+        //     // Setting the anchor tag attribute for downloading
+        //     // and passing the download file name
+        //     a.setAttribute('download', 'download.csv');
+
+        //     // Performing a download with click
+        //     a.click()
+        // }
+
+        const export_csv = async function() {
+            data = [];
+            var header = tf.getHeadersText().map(function(item) {
+                return item.trim().replace(/\s+/g, ' ');
             });
-        });
+            header.pop();
+            data.push(header);
+
+            var content = tf.getFilteredData().map(function(item) {
+                var element = item[1];
+                element.pop();
+                data.push(element);
+                return (element);
+            });
+            var options = {
+                quotes: true,
+                delimiter: ",",
+                newline: "\r\n",
+                columns: [{
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    },
+                    {
+                        width: 50
+                    }
+                ]
+            };
+            var csv = Papa.unparse(data, options);
+            var currentDate = new Date();
+            var currentDateTime = currentDate.toLocaleString();
+            var blob = new Blob([csv], {
+                type: "text/csv;charset=utf-8"
+            });
+            saveAs(blob, `${currentDateTime}.csv`);
+
+            // const csvdata = csvmaker(data);
+            // download(csvdata);
+        }
+        // const csvmaker = function(data) {
+
+        //     csvRows = [];
+
+
+        //     const headers = Object.keys(data[0]);
+        //     console.log(data[0]);
+
+        //     // csvRows.push(headers.join(','));
+
+        //     console.log(headers);
+
+        //     for (const row of data) {
+        //         const values = headers.map(e => {
+        //             return row[e]
+        //         })
+        //         csvRows.push(values.join(','))
+        //     }
+
+        //     return csvRows.join('\n')
+        // }
+
+        const export_xlsx = async function() {
+            data = [];
+            var header = tf.getHeadersText().map(function(item) {
+                return item.trim().replace(/\s+/g, ' ');
+            });
+            header.pop();
+            data.push(header);
+
+            var content = tf.getFilteredData().map(function(item) {
+                var element = item[1];
+                element.pop();
+                data.push(element);
+                return (element);
+            });
+            var csv = Papa.unparse(data);
+            var workbook = XLSX.read(csv, {
+                type: "string"
+            });
+            var xlsxData = XLSX.write(workbook, {
+                bookType: "xlsx",
+                type: "binary"
+            });
+            var currentDate = new Date();
+            var currentDateTime = currentDate.toLocaleString();
+            saveAs(new Blob([s2ab(xlsxData)], {
+                type: "application/octet-stream"
+            }), `${currentDateTime}.xlsx`);
+        }
+
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i < s.length; i++) {
+                view[i] = s.charCodeAt(i) & 0xff;
+            }
+            return buf;
+        }
     </script>
+
+
+    <!-- <script>
+        function export_csv() {
+
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", 'export_filtered.php');
+
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "Header");
+            hiddenField.setAttribute("value", tf.getHeadersText());
+
+            form.appendChild(hiddenField);
+
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "String");
+            hiddenField.setAttribute("value", tf.getFilteredData());
+
+            form.appendChild(hiddenField);
+
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script> -->
 </div>
 
 
