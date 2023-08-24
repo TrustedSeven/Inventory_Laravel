@@ -202,6 +202,9 @@
                     page_length: true,
                     sort: true
                 },
+                auto_filter: {
+                    delay: 1100 //milliseconds
+                },
                 alternate_rows: true,
                 btn_reset: true,
                 rows_counter: true,
